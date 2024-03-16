@@ -1,0 +1,23 @@
+.parent {
+    // background: rebeccapurple;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+
+    .showUsers {
+        // background: gray;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        // gap: 1rem;
+
+        width: 22rem;
+        // height: 20rem;
+    }
+
+    // .button {
+    //     justify-content: space-between;
+    // }
+}

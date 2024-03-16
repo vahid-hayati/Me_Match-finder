@@ -1,0 +1,13 @@
+<!-- <p>navbar works!</p> -->
+<mat-toolbar color="primary">
+    <section class="left">
+        <a routerLink="/" class="brand"> <!--We use the a tag because it is clickable-->
+            <mat-icon>eco</mat-icon>
+            Match Finder
+        </a>
+    </section>
+    <section class="right">
+        <!-- <p *ngIf="user">{{user.knownAs}}</p> -->
+        <p *ngIf="user">{{user.email}}</p>
+    </section>
+</mat-toolbar>

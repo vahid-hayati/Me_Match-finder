@@ -1,0 +1,52 @@
+<!-- <button (click)="register()" mat-raised-button color="primary">Register User</button> -->
+
+<form [formGroup]="registerFg" (ngSubmit)="registerFg.valid && register()">
+    <div class="content">
+        <h1>Create Account</h1>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input type="email" formControlName="emailCtrl" label="Email" placeholder="Your Email" matInput>
+            <mat-hint>Your email will be used as your username</mat-hint>
+            <mat-error *ngIf="EmailCtrl.hasError('required')">This field is required</mat-error>
+            <mat-error *ngIf="EmailCtrl.hasError('pattern')">Enter a valid email</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input type="password" formControlName="passwordCtrl" label="password" placeholder="Your password" matInput>
+            <mat-hint>enter a password between 7 and 20 characters</mat-hint>
+            <mat-error *ngIf="PasswordCtrl.hasError('required')">This field is required</mat-error>
+            <mat-error *ngIf="PasswordCtrl.hasError('minlength')">It's too short. Min: 7 characters</mat-error>
+            <mat-error *ngIf="PasswordCtrl.hasError('maxlength')">It's too long. Max: 20 characters</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input type="password" formControlName="confirmPasswordCtrl" label="confirmPassword"
+                placeholder="Re-enter password" matInput>
+            <mat-hint>Re-enter the password</mat-hint>
+            <mat-error *ngIf="ConfirmPasswordCtrl.hasError('required')">This field is required</mat-error>
+            <mat-error *ngIf="ConfirmPasswordCtrl.hasError('minlength')">It's too short. Min: 7 characters</mat-error>
+            <mat-error *ngIf="ConfirmPasswordCtrl.hasError('maxlength')">It's too long. Max: 20 characters</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>known As</mat-label>
+            <input type="text" formControlName="knownAsCtrl" label="knownAs" placeholder="Your known As" matInput>
+            <mat-hint>knownAs</mat-hint>
+            <mat-error *ngIf="KnownAsCtrl.hasError('required')">This field is required</mat-error>
+            <mat-error *ngIf="KnownAsCtrl.hasError('minlength')">It's too short. Min: 2 characters</mat-error>
+            <mat-error *ngIf="KnownAsCtrl.hasError('maxlength')">It's too long. max: 30 characters</mat-error>
+        </mat-form-field>
+
+        <button type="submit" [disabled]="registerFg.invalid" mat-raised-button color="primary">Register</button>
+
+        <!--Other Errors-->
+        <p *ngIf="apiErrorMessage">{{apiErrorMessage}}</p>
+    </div>
+</form>
+
+<button (click)="getState()">State</button>
+<p>{{registerFg.value | json}}</p>
+<!-- <p>{{EmailCtrl.errors| json}}</p> -->

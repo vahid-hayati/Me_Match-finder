@@ -1,0 +1,30 @@
+form {
+    background: greenyellow;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0.5rem;
+
+    .content {
+        background: aqua;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+
+        width: 25rem;
+
+        border: 1px solid rgb(172, 172, 172);
+        border-radius: 2rem;
+
+        padding: 1rem;
+    }
+
+    mat-form-fild {
+        min-width: 20rem;
+    }
+
+    p {
+        color: red;
+    }
+}
