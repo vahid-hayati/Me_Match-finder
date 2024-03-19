@@ -26,9 +26,4 @@ export class HomeComponent implements OnInit {
       error: err => console.log(err)
     });
   }
-
-  logout(): void {
-    // console.log('logout is called');
-    this.accountService.logoutUser();
-  }
 }

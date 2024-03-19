@@ -1,21 +1,8 @@
-<section class="parent">
-    <div class="showUsers">
-        <button mat-flat-button (click)="showAllUsers()" color="warn">Show Users</button>
-
-        <h1 *ngFor="let user of allUsers">
-            <!-- {{user.id}} -->
-            <br>
-            {{user.email}}
-        </h1>
-    </div>
-
-    <div *ngIf="!user; else logoutSection" class="button">
-        <button mat-raised-button color="primary" routerLink="register">Register</button>
-        <button mat-raised-button color="accent" routerLink="login">Login</button>
-    </div>
-
-    <ng-template #logoutSection>
-        <button (click)="logout()" mat-raised-button color="warn">logout</button>
-    </ng-template>
-
-</section>
+<div class="showUsers">
+    <button (click)="showAllUsers()" mat-fab color="warn">Show Users</button>
+    <h1 *ngFor="let user of allUsers">
+        {{user.id}}
+        <br>
+        {{user.email}}
+    </h1>
+</div>

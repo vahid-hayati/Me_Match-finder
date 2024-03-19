@@ -59,7 +59,6 @@ export class RegisterComponent {
       this.accountService.registerUser(user).subscribe({
         next: user => {
           console.log('New user', user);
-          this.router.navigateByUrl('/');
         }, 
         error: err => this.apiErrorMessage = err.error //console.log(err.error
       })

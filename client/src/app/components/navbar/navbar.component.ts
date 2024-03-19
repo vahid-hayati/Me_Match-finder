@@ -18,4 +18,8 @@ export class NavbarComponent implements OnInit {
       next: response => this.user = response
     })
   }
+
+  logout(): void {
+    this.accountService.logoutUser();
+  }
 }

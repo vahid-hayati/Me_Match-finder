@@ -21,6 +21,8 @@ export class AccountService {                             // Initialization
         if (userResponse) {
           this.setCurrentUser(userResponse);
 
+          this.router.navigateByUrl('/');
+
           return userResponse;
         }
 
@@ -53,13 +55,7 @@ export class AccountService {                             // Initialization
     this.currentUserSource.next(null);
 
     localStorage.removeItem('user');
+
+    this.router.navigateByUrl('/login')
   }
-
-  // logoutUser(): void {
-  //   this.currentUserSource.next(null);
-
-  //   localStorage.removeItem('user');
-
-  //   this.router.navigateByUrl('/login');
-  // }
 }

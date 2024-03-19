@@ -1,4 +1,3 @@
-<!-- <p>navbar works!</p> -->
 <mat-toolbar color="primary">
     <section class="left">
         <a routerLink="/" class="brand"> <!--We use the a tag because it is clickable-->
@@ -7,7 +6,57 @@
         </a>
     </section>
     <section class="right">
-        <!-- <p *ngIf="user">{{user.knownAs}}</p> -->
-        <p *ngIf="user">{{user.email}}</p>
+        <!-- if logged-in: show appMenu
+            else: show signup/login -->
+        <button *ngIf="user; else loginRegisterSection" [mat-menu-trigger-for]="appMenu" class="menu-button"
+            mat-mini-fab>
+            <span>{{user.email[0] | titlecase}}</span>
+        </button>
+        <ng-template #loginRegisterSection>
+            <button routerLink="register" mat-raised-button color="primary">Register</button>
+            <button routerLink="login" mat-raised-button color="accent">Login</button>
+        </ng-template>
+
+        <mat-menu #appMenu [class]="'mat-menu'">
+            <!-- profile -->
+            <div *ngIf="user" class="user-info">
+                <div class="profile-image">
+                    <p>
+                        {{user.email[0] | titlecase}}
+                    </p>
+                </div>
+                <div>
+                    <p class="id">{{user.id}}</p>
+                    <p class="email">{{user.email}}</p>
+                </div>
+            </div>
+            <!-- navigation -->
+            <mat-divider></mat-divider>
+            <mat-list>
+                <mat-list-item>
+                    <div routerLink="/" mat-button class="menu-items">
+                        <mat-icon>edit_note</mat-icon>
+                        Edit Profile
+                    </div>
+                </mat-list-item>
+                <mat-list-item [routerLink]="['/member/get-all']" routerLinkActive="router-link-active">
+                    <div class="menu-items">
+                        <mat-icon>flaky</mat-icon>
+                        All Members
+                    </div>
+                </mat-list-item>
+                <mat-list-item [routerLink]="['/message/inbox']" routerLinkActive="router-link-active">
+                    <div class="menu-items">
+                        <mat-icon>assignment_returned</mat-icon>
+                        Messages
+                    </div>
+                </mat-list-item>
+            </mat-list>
+
+            <mat-divider></mat-divider>
+            <div class="logout">
+                <button (click)="logout()" mat-raised-button>Logout</button>
+            </div>
+        </mat-menu>
     </section>
 </mat-toolbar>
