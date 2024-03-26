@@ -56,6 +56,6 @@ export class AccountService {                             // Initialization
 
     localStorage.removeItem('user');
 
-    this.router.navigateByUrl('/login')
+    this.router.navigateByUrl('/login');
   }
 }
